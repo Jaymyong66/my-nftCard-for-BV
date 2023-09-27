@@ -29,26 +29,26 @@ async function main() {
   }
 
   const wallet = new hre.ethers.Wallet(privateKey, provider); // 연결된 프로바이더 추가
-  const currentGasPrice = await provider.getGasPrice();
+  //const currentGasPrice = await provider.getGasPrice();
 
   const contract = new ethers.Contract(contractAddress, abi, provider).connect(
     wallet
   ) as SimpleCardNFTFactory;
 
   await contract.registerSimpleCardInfo(
-    "Tina",
-    "seungeun020309@gmail.com",
-    "NO_Company",
-    "Sookmyung Women's University",
-    "Mechanical Systems Engineering",
-    "010-0000-0000",
-    "https://github.com/Learning-N-Running"
+    "Jaewi-Myong",
+    "mjw8941@korea.ac.kr",
+    "Blockchain Valley",
+    "Korea University",
+    "Computer Science",
+    "010-1234-5678",
+    "https://github.com/JayMyong66"
   );
   console.log("Simple Card Info Registered");
 
   // Mint a new SimpleCardNFT
   await contract.mintSimpleCardNFT({
-    gasPrice: currentGasPrice.add(ethers.utils.parseUnits("1", "gwei")),
+    // gasPrice: currentGasPrice.add(ethers.utils.parseUnits("1", "gwei")),
     value: ethers.utils.parseEther("0.01"),
   });
   console.log("New SimpleCardNFT Minted");
